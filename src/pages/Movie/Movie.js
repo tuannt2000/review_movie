@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
@@ -60,96 +60,102 @@ function toDate(date) {
 }
 
 export default function Movie() {
-    // const [movie, setMovie] = useState(0);
+    const [movie, setMovie] = useState(0);
     const classes = useStyles();
 
-    const movie = {
-        "movie_id": "461763",
-        "title": "ハイキュー!! コンセプトの戦い",
-        "plot": "Recap film focusing primarily on the match against shiratorizawa from the third season.",
-        "poster": "/xihNhrJnGa04zn9pUr3ZxA8B4ZU.jpg",
-        "release_date": "2017-09-29T00:00:00.000Z",
-        "imdb_id": "",
-        "cast": [
-            {
-                "people_id": "1325230",
-                "name": "Ayumu Murase",
-                "image": "/3aGM6KpcCIEKOXP9510tzaKc8uw.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1324666",
-                "name": "Kaito Ishikawa",
-                "image": "/kLVhJYH73ust9ComUxGR63DOvxu.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1253008",
-                "name": "Yoshimasa Hosoya",
-                "image": "/r90gExomlgr7IEt3vZ1Y0xYkXHT.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1613352",
-                "name": "Toshiki Masuda",
-                "image": "/oMAk5Pu3aazmwFwiVOgyU7iW5ut.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1245094",
-                "name": "Nobuhiko Okamoto",
-                "image": "/qyZpSYva9O9JQIZ0nVmXTf90FlL.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "224413",
-                "name": "Satoshi Hino",
-                "image": "/8ZJIiwIVF2zDyyFr7oXewj0eEuu.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "203473",
-                "name": "Kaori Nazuka",
-                "image": "/zTydHbhNjpwoCydvrJAd3d64C3g.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "19588",
-                "name": "Miyu Irino",
-                "image": "/dcZ4IJX8CBcJzxy8hhKFXv59LDE.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1142780",
-                "name": "Subaru Kimura",
-                "image": "/nlqkMKrvuBL8WJIEAMeCyrpz4Hb.jpg",
-                "profession": "Acting",
-                "role": "Acting"
-            },
-            {
-                "people_id": "1254052",
-                "name": "Koki Uchiyama",
-                "image": "/sllSm3iZZWVLTBrDZQRtWrZUfEj.jpg",
-                "profession": "Acting",
-                "role": "Acting"
+    console.log(movie)
+
+    // const movie = {
+    //     "movie_id": "461763",
+    //     "title": "ハイキュー!! コンセプトの戦い",
+    //     "plot": "Recap film focusing primarily on the match against shiratorizawa from the third season.",
+    //     "poster": "/xihNhrJnGa04zn9pUr3ZxA8B4ZU.jpg",
+    //     "release_date": "2017-09-29T00:00:00.000Z",
+    //     "imdb_id": "",
+    //     "cast": [
+    //         {
+    //             "people_id": "1325230",
+    //             "name": "Ayumu Murase",
+    //             "image": "/3aGM6KpcCIEKOXP9510tzaKc8uw.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1324666",
+    //             "name": "Kaito Ishikawa",
+    //             "image": "/kLVhJYH73ust9ComUxGR63DOvxu.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1253008",
+    //             "name": "Yoshimasa Hosoya",
+    //             "image": "/r90gExomlgr7IEt3vZ1Y0xYkXHT.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1613352",
+    //             "name": "Toshiki Masuda",
+    //             "image": "/oMAk5Pu3aazmwFwiVOgyU7iW5ut.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1245094",
+    //             "name": "Nobuhiko Okamoto",
+    //             "image": "/qyZpSYva9O9JQIZ0nVmXTf90FlL.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "224413",
+    //             "name": "Satoshi Hino",
+    //             "image": "/8ZJIiwIVF2zDyyFr7oXewj0eEuu.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "203473",
+    //             "name": "Kaori Nazuka",
+    //             "image": "/zTydHbhNjpwoCydvrJAd3d64C3g.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "19588",
+    //             "name": "Miyu Irino",
+    //             "image": "/dcZ4IJX8CBcJzxy8hhKFXv59LDE.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1142780",
+    //             "name": "Subaru Kimura",
+    //             "image": "/nlqkMKrvuBL8WJIEAMeCyrpz4Hb.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         },
+    //         {
+    //             "people_id": "1254052",
+    //             "name": "Koki Uchiyama",
+    //             "image": "/sllSm3iZZWVLTBrDZQRtWrZUfEj.jpg",
+    //             "profession": "Acting",
+    //             "role": "Acting"
+    //         }
+    //     ]
+    // }
+    useEffect(() => {
+        const query = window.location.pathname.substring(7);
+        fetch("https://popcritic.herokuapp.com/movie/" + query)
+            .then(resp => resp.json())
+            .then((data) => {
+                setMovie(data)
+                console.log(data)
             }
-        ]
-    }
-    // useEffect(() => {
-    //     const query = window.location.pathname.substring(7);
-    //     fetch("https://popcritic.herokuapp.com/movie/" + query)
-    //         .then(resp => resp.json())
-    //         .then((data) => setMovie(data))
-    //         .catch((e) => { console.log(e) });
-    // }, [])
+                )
+            .catch((e) => { console.log(e) });
+    }, [])
 
     return (
         <div>
