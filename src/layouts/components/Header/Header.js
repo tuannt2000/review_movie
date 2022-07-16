@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -93,15 +93,20 @@ export default function SearchAppBar() {
     const [value, setValue] = useState('');
     const [profile, setProfile] = useState(1);
 
-    // useEffect(() => {
-    //     fetch("https://popcritic.herokuapp.com/me",{headers: {token: window.localStorage.getItem("token")}})
-    //       .then(resp => resp.json())
-    //       .then((data) => setProfile(data))
-    //       .catch((err) => console.log(err));
-    //   },[])
+    useEffect(() => {
+        fetch("https://popcritic.herokuapp.com/me",{headers: {token: window.localStorage.getItem("token")}})
+          .then(resp => resp.json())
+          .then((data) => setProfile(data))
+          .catch((err) => console.log(err));
+      },[])
 
     function search(e) {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value
+    }
+
+    function handleLogIn() {
+        window.localStorage.setItem("token", 'a0d9f033e800b501');
+        window.location.href = "/";
     }
 
     return (
@@ -133,7 +138,7 @@ export default function SearchAppBar() {
                         />
                     </div>
                     {
-                        profile.pic ? <Link href="/me"><Avatar alt="PopCritic" src={profile ? profile.pic : ""} className={classes.user} /></Link> : <Button variant="contained" href="/" className={classes.login}>Log In</Button>
+                        profile.pic ? <Link href="/me"><Avatar alt="PopCritic" src={profile ? profile.pic : ""} className={classes.user} /></Link> : <Button onClick={handleLogIn} variant="contained" href="/" className={classes.login}>Log In</Button>
                     }
                 </Toolbar>
             </AppBar>

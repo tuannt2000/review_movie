@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -42,27 +42,16 @@ function toDate(date) {
 }
 
 export default function Me() {
-    // const [profile, setProfile] = useState(0);
-
-    const profile = {
-        "user_id": "102268876165079026597",
-        "session_id": "2b175c8b4a988358",
-        "created": "2022-07-14T00:00:00.000Z",
-        "name": null,
-        "join_date": "2022-07-10T00:00:00.000Z",
-        "authenticity": "0.00",
-        "email": "tuan.nh201612@gmail.com",
-        "pic": "https://lh3.googleusercontent.com/a/default-user=s96-c"
-    }
+    const [profile, setProfile] = useState(0);
 
     const classes = useStyles();
 
-    // useEffect(() => {
-    //     fetch("https://popcritic.herokuapp.com/me", { headers: { token: window.localStorage.getItem("token") } })
-    //         .then(resp => resp.json())
-    //         .then((data) => setProfile(data))
-    //         .catch(() => window.location.href = "/");
-    // }, [])
+    useEffect(() => {
+        fetch("https://popcritic.herokuapp.com/me", { headers: { token: window.localStorage.getItem("token") } })
+            .then(resp => resp.json())
+            .then((data) => setProfile(data))
+            .catch(() => window.location.href = "/");
+    }, [])
 
     function logOut() {
         window.localStorage.clear();

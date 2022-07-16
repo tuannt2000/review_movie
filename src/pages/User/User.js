@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -41,23 +41,14 @@ function toDate(date) {
 }
 
 export default function User() {
-    // const [profile, setProfile] = useState(0);
-
-    const profile = {
-        "user_id": "100579896006844434691",
-        "name": null,
-        "join_date": "2021-05-15T00:00:00.000Z",
-        "authenticity": "0.00",
-        "email": "sk.ekanayake1@gmail.com",
-        "pic": "https://lh3.googleusercontent.com/a-/AOh14GhoAGkmLftyH_j4HlxY0FuOLPUS-qiHUR777HBeOQ=s96-c"
-    }
+    const [profile, setProfile] = useState(0);
 
     const classes = useStyles();
 
-    // useEffect(() => {
-    //     var id = window.location.pathname.substring(6);
-    //     fetch("https://popcritic.herokuapp.com/user/" + id).then(resp => resp.json()).then((data) => setProfile(data)).catch(console.log);
-    // }, [])
+    useEffect(() => {
+        var id = window.location.pathname.substring(6);
+        fetch("https://popcritic.herokuapp.com/user/" + id).then(resp => resp.json()).then((data) => setProfile(data)).catch(console.log);
+    }, [])
 
     return (
         <div>

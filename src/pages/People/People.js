@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
@@ -51,58 +51,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Movie() {
-    // const [people, setPeople] = useState(0);
+    const [people, setPeople] = useState(0);
 
     const classes = useStyles();
 
-    const people = {
-        "people_id": "65510",
-        "name": "Mayumi Tanaka",
-        "image": "/dvwL1Uqqm8eyVLbTqCyyiSnpG83.jpg",
-        "profession": "Acting",
-        "movies": [
-            {
-                "movie_id": "568012",
-                "title": "ワンピーススタンピード",
-                "plot": "One Piece: Stampede is a stand-alone film that celebrates the anime's 20th Anniversary and takes place outside the canon of the \"One Piece\" TV series. Monkey D. Luffy and his Straw Hat pirate crew are invited to a massive Pirate Festival that brings many of the most iconic characters from throughout the franchise to participate in competition with the Straw Hats to find Roger's treasure. It also pits the Straw Hats against a new enemy named Bullet, a former member of Roger's crew.",
-                "poster": "/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg",
-                "release_date": "2019-08-09T00:00:00.000Z",
-                "role": "Acting"
-            },
-            {
-                "movie_id": "19576",
-                "title": "ワンピース",
-                "plot": "There once was a pirate known as the Great Gold Pirate Woonan, who obtained almost one-third of the world's gold. Over the course of a few years, the pirate's existence faded, and a legend grew that he disappeared with his gold to a remote island, an island pirates continue to search for. Aboard the Going Merry, Luffy and his crew, starved and reckless, are robbed of their treasure. In an attempt to get it back, they wreck the getaway ship, guided by a young boy named Tobio, who's a captured part of El Drago's pirate crew. El Drago's love for gold has driven him to look for Woonan's island, and thanks to Woonan's treasure map, he finds it. During this time, Luffy's crew have been split up, and despite their own circumstances, they must find a way to stop El Drago from obtaining Woonan's gold.",
-                "poster": "/6QOrTYafoqzXPWLnR2K8129jTHH.jpg",
-                "release_date": "2000-03-04T00:00:00.000Z",
-                "role": "Acting"
-            },
-            {
-                "movie_id": "44729",
-                "title": "ワンピース the movie オマツリ男爵と秘密の島",
-                "plot": "The Straw Hats visit a recreational island, run by Baron Omatsuri, the former captain of a pirate crew, who were all killed years ago. Being the only survivor, he then started hating all close-knit groups of pirates and wishing to separate them. He and his henchmen seed distrust among the Straw Hats and capture them one by one, leaving only Luffy to free his crew from the Baron's hold.",
-                "poster": "/8rgWeWMG48GakXCempvyBBhgyl3.jpg",
-                "release_date": "2005-03-05T00:00:00.000Z",
-                "role": "Acting"
-            },
-            {
-                "movie_id": "39104",
-                "title": "ドラゴンボールＺ 極限バトル！三大超サイヤ人",
-                "plot": "Dr. Gero's Androids #13, #14, and #15 are awakened by the laboratory computers and immediately head to the mall where Goku is shopping. After Goku, Trunks, and Vegeta defeat #14 and #15, #13 absorbs their inner computers and becomes a super being greater than the original three separately were. Now it is up to Goku to stop him.",
-                "poster": "/uVJqC187rKxQ1sJsWlKjNfAzeTk.jpg",
-                "release_date": "1992-07-11T00:00:00.000Z",
-                "role": "Acting"
-            }
-        ]
-    }
-
-    // useEffect(() => {
-    //     const query = window.location.pathname.substring(8);
-    //     fetch("https://popcritic.herokuapp.com/people/" + query)
-    //         .then(resp => resp.json())
-    //         .then((data) => setPeople(data))
-    //         .catch(() => { window.location.href = "/" });
-    // }, [])
+    useEffect(() => {
+        const query = window.location.pathname.substring(8);
+        fetch("https://popcritic.herokuapp.com/people/" + query)
+            .then(resp => resp.json())
+            .then((data) => setPeople(data))
+            .catch(() => { window.location.href = "/" });
+    }, [])
 
     return (
         <div>
