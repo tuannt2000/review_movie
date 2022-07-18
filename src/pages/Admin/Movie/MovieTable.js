@@ -5,7 +5,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import "./styles.css";
 import { Link } from "react-router-dom";
-
+import AddIcon from "@mui/icons-material/Add";
+import ModalEditMovie from "~/components/ModalEditMovie/ModalEditMovie";
 function createData(id, movieName, rate, status) {
   return { id, movieName, rate, status };
 }
@@ -33,54 +34,78 @@ const style = {
 };
 
 const MovieTable = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [openAdd, setOpenAdd] = React.useState(false);
+  const handleOpenModalAdd = () => setOpenAdd(true);
+  const handleCloseModalAdd = () => setOpenAdd(false);
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const handleOpenModalEdit = () => setOpenEdit(true);
+  const handleCloseModalEdit = () => setOpenEdit(false);
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>STT</th>
-          <th>Movie Name</th>
-          <th>Rate</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row, index) => (
-          <tr key={index}>
-            <td>{index}</td>
-            <td><a href={`/admin/movies/${row.id}`} style={{textDecoration:"none", color:"black"}}>{row.movieName}</a></td>
-            <td>{row.rate}</td>
-            <td>{row.status}</td>
-            <td>
-              <Button variant="contained" onClick={handleOpen}>
-                <EditIcon></EditIcon>
-              </Button>
-              <Button variant="contained" color="error">
-                <DeleteIcon></DeleteIcon>
-              </Button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+    <React.Fragment>
+      <Button
+        variant="contained"
+        onClick={handleOpenModalAdd}
+        className="btn__add"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </Table>
+        <AddIcon></AddIcon>
+      </Button>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Movie Name</th>
+            <th>Rate</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index}>
+              <td>{index}</td>
+              <td>
+                <a
+                  href={`/admin/movies/${row.id}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  {row.movieName}
+                </a>
+              </td>
+              <td>{row.rate}</td>
+              <td>{row.status}</td>
+              <td>
+                <Button variant="contained" onClick={handleOpenModalEdit}>
+                  <EditIcon></EditIcon>
+                </Button>
+                <Button variant="contained" color="error">
+                  <DeleteIcon></DeleteIcon>
+                </Button>
+              </td>
+              <ModalEditMovie
+                open={openEdit}
+                handleClose={handleCloseModalEdit}
+                data={row}
+              />
+            </tr>
+          ))}
+        </tbody>
+        <Modal
+          open={openAdd}
+          onClose={handleCloseModalAdd}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Text in a modal
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+          </Box>
+        </Modal>
+      </Table>
+    </React.Fragment>
   );
 };
 
