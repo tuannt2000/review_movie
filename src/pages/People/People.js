@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import Link from '@material-ui/core/Link';
-
+import { REACT_APP_BASE_URL } from '~/constants/config';
 import CreateReview from '~/components/createReview';
 import ReviewList from '~/components/reviewList';
 
@@ -57,7 +57,7 @@ export default function Movie() {
 
     useEffect(() => {
         const query = window.location.pathname.substring(8);
-        fetch("https://popcritic.herokuapp.com/people/" + query)
+        fetch(REACT_APP_BASE_URL + "people/" + query)
             .then(resp => resp.json())
             .then((data) => setPeople(data))
             .catch(() => { window.location.href = "/" });

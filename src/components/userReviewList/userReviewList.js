@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Link from '@material-ui/core/Link';
 import Rating from '@material-ui/lab/Rating';
+import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const useStyles = makeStyles((theme) => ({
     list: {
@@ -48,7 +49,7 @@ export default function UserReviewList(props) {
 
     useEffect(() => {
         var query = props.id || window.location.pathname.substring(6);
-        fetch("https://popcritic.herokuapp.com/user/" + query + "/  ")
+        fetch(REACT_APP_BASE_URL + "user/" + query + "/  ")
             .then(resp => resp.json())
             .then((data) => setReviews(data));
     }, [props.id])

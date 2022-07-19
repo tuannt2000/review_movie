@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const tmdb_api_key = "a7219d99028ec2f029a458c81ba22b37"; 
 
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function addMovie(id) {
-    fetch("https://popcritic.herokuapp.com/add/" + id, { method: "POST", headers: { token: window.localStorage.getItem("token") } }).then(x => x.text()).then(function () {
+    fetch(REACT_APP_BASE_URL + "add/" + id, { method: "POST", headers: { token: window.localStorage.getItem("token") } }).then(x => x.text()).then(function () {
         window.location.href = "/movie/" + id;
     }).catch(console.log);
 }

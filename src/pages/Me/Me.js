@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import { REACT_APP_BASE_URL } from '~/constants/config';
 import UserReviewList from '~/components/userReviewList';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,7 @@ export default function Me() {
     const classes = useStyles();
 
     useEffect(() => {
-        fetch("https://popcritic.herokuapp.com/me", { headers: { token: window.localStorage.getItem("token") } })
+        fetch(REACT_APP_BASE_URL + "me", { headers: { token: window.localStorage.getItem("token") } })
             .then(resp => resp.json())
             .then((data) => setProfile(data))
             .catch(() => window.location.href = "/");

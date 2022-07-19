@@ -7,6 +7,7 @@ import Rating from '@material-ui/lab/Rating';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Link from '@material-ui/core/Link';
 import React, { useEffect, useState } from "react";
+import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -43,7 +44,7 @@ function Home() {
   const classes = useStyles();
 
   useEffect(() => {
-    fetch("https://popcritic.herokuapp.com/movies")
+    fetch(REACT_APP_BASE_URL + "movies")
       .then(resp => resp.json())
       .then((data) => {
         setMovies(data)

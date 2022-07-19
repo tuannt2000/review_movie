@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import axios from "axios";
-
+import { REACT_APP_BASE_URL } from '~/constants/config';
 import CreateReview from '~/components/createReview';
 import ReviewList from '~/components/reviewList';
 
@@ -66,7 +66,7 @@ export default function Movie() {
 
     useEffect(() => {
         const query = window.location.pathname.substring(7);
-        axios("https://popcritic.herokuapp.com/movie/" + query).then((response) => {
+        axios(REACT_APP_BASE_URL + "movie/" + query).then((response) => {
             setMovie(response.data)
         }).catch((e) => {
             console.log(e);

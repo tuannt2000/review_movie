@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-
+import { REACT_APP_BASE_URL } from '~/constants/config';
 import UserReviewList from '~/components/userReviewList';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,7 @@ export default function User() {
 
     useEffect(() => {
         var id = window.location.pathname.substring(6);
-        fetch("https://popcritic.herokuapp.com/user/" + id).then(resp => resp.json()).then((data) => setProfile(data)).catch(console.log);
+        fetch(REACT_APP_BASE_URL + "user/" + id).then(resp => resp.json()).then((data) => setProfile(data)).catch(console.log);
     }, [])
 
     return (

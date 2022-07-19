@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
 import Rating from '@material-ui/lab/Rating';
+import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -50,7 +51,7 @@ export default function ReviewList(props) {
 
     useEffect(() => {
         const id = window.location.pathname.substring(props.type === "movie" ? 7 : 8);
-        fetch("https://popcritic.herokuapp.com/" + props.type + "/" + id + "/reviews")
+        fetch(REACT_APP_BASE_URL + props.type + "/" + id + "/reviews")
             .then(resp => resp.json())
             .then((data) => setReviews(data));
     }, [props.type])

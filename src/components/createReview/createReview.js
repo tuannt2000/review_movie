@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Rating from '@material-ui/lab/Rating';
 import Button from '@material-ui/core/Button';
+import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 function postReview(rating, review, type) {
     var id = window.location.pathname.substring(type === "movie" ? 7 : 8);
-    fetch("https://popcritic.herokuapp.com/" + type + "/" + id + "/reviews", { method: "POST", body: JSON.stringify({ rating, review }), headers: { 'Content-Type': "application/json", token: window.localStorage.getItem("token") } })
+    fetch(REACT_APP_BASE_URL + type + "/" + id + "/reviews", { method: "POST", body: JSON.stringify({ rating, review }), headers: { 'Content-Type': "application/json", token: window.localStorage.getItem("token") } })
         .then(x => x.text())
         .then(function () {
             window.location.reload();
