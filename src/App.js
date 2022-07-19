@@ -14,7 +14,7 @@ function App() {
         console.log(query, token);
         if (token && token.length > 0) localStorage.setItem("token", token);
         setMessage(false);
-        // window.location.href = "/";
+        window.location.href = "/";
     }
 
     return (
