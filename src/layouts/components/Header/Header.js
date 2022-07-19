@@ -105,11 +105,6 @@ export default function SearchAppBar() {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value
     }
 
-    function handleLogIn() {
-        window.localStorage.setItem("token", 'a0d9f033e800b501');
-        window.location.href = "/";
-    }
-
     return (
         <div className={classes.header}>
             <AppBar position="static" className={classes.bar}>
@@ -139,7 +134,7 @@ export default function SearchAppBar() {
                         />
                     </div>
                     {
-                        profile.pic ? <Link href="/me"><Avatar alt="PopCritic" src={profile ? profile.pic : ""} className={classes.user} /></Link> : <Button onClick={handleLogIn} variant="contained" href="/" className={classes.login}>Log In</Button>
+                        profile.pic ? <Link href="/me"><Avatar alt="PopCritic" src={profile ? profile.pic : ""} className={classes.user} /></Link> : <Button variant="contained" href="https://review-film-backend.herokuapp.com/login" className={classes.login}>Log In</Button>
                     }
                 </Toolbar>
             </AppBar>
