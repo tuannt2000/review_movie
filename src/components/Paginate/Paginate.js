@@ -1,6 +1,6 @@
 import ReactPaginate from 'react-paginate';
 import React, { useEffect, useState } from 'react';
-import PeopleList from '~/pages/Admin/people/PeopleList';
+import PeopleList from '~/pages/Admin/People/PeopleList';
 import { REACT_APP_BASE_URL } from '~/constants/config';
 
 function PaginatedItems({ itemsPerPage }) {
