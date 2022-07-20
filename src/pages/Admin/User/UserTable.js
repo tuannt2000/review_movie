@@ -29,7 +29,7 @@ const UserTable = () => {
             <td>{index}</td>
             <td><img src={user.pic} alt={user.name} /></td>
             <td>{user.email}</td>
-            <td>{user.joined}</td>
+            <td>{user.joined_date}</td>
           </tr>
         ))}
       </tbody>
