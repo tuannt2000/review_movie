@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import images from '~/assets/images';
 import { REACT_APP_BASE_URL } from '~/constants/config';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -95,11 +96,14 @@ export default function SearchAppBar() {
     const [profile, setProfile] = useState(1);
 
     useEffect(() => {
-        fetch(REACT_APP_BASE_URL + "me",{headers: {token: window.localStorage.getItem("token")}})
-          .then(resp => resp.json())
-          .then((data) => setProfile(data))
-          .catch((err) => console.log(err));
-      },[])
+        axios(REACT_APP_BASE_URL + "me", {
+                headers: {
+                    "token": window.localStorage.getItem("token")
+                }
+            })
+            .then(data => setProfile(data))
+            .catch(err => console.log(err));
+    }, [])
 
     function search(e) {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value

@@ -151,7 +151,6 @@ export default function Movie() {
           <List className={classes.list}>
             {movie &&
               movie.cast.map((p, index) => {
-                console.log(p)
                 return p.image !== null ? (
                   <Link key={index} href={"/people/" + p.people_id}>
                     <img

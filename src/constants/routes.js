@@ -4,7 +4,7 @@ const routes = {
     people: '/people/:id',
     user: '/user/:id',
     me: '/me',
-    search: '/search',
+    search: '/search/:q',
     adminUser: '/admin/users',
     adminMovies: '/admin/movies',
     adminMovieDetail: '/admin/movies/:id',
