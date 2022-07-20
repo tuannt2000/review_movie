@@ -5,7 +5,6 @@ import Movie from "~/pages/Movie";
 import People from "~/pages/People";
 import User from "~/pages/User/User";
 import Me from "~/pages/Me/Me";
-import Search from "~/pages/Search/Search";
 import UserTable from "~/pages/Admin/User/UserTable";
 import MovieTable from "~/pages/Admin/Movie/MovieTable";
 import MovieDetail from "~/pages/Admin/Movie/MovieDetail";

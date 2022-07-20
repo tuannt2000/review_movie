@@ -4,7 +4,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import "./styles.css";
-import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import ModalEditMovie from "~/components/ModalEditMovie/ModalEditMovie";
 function createData(id, movieName, rate, status) {

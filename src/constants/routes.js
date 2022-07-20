@@ -10,7 +10,6 @@ const routes = {
     adminMovieDetail: '/admin/movies/:id',
     adminPeoples: '/admin/peoples',
     adminPeopleDetail: '/admin/peoples/:id',
-
 };
 
 export default routes;

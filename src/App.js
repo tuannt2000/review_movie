@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DefaultLayout } from '~/layouts';
+import { DefaultLayout, DefaultLayoutAdmin } from '~/layouts';
 import { routes } from '~/routes';
 import React, { useState } from "react";
 import Snackbar from '@material-ui/core/Snackbar';
@@ -23,6 +23,10 @@ function App() {
                 <Routes>
                     {routes.map((route, index) => {
                         let Layout = DefaultLayout;
+
+                        if (route.role) {
+                            Layout = DefaultLayoutAdmin;
+                        }
 
                         const Page = route.component;
                         return <Route key={index} path={route.path} element={

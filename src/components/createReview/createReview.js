@@ -59,6 +59,8 @@ export default function CreateReview(props) {
             .then(x => x.text())
             .then(function () {
                 window.location.reload();
+                setReview('');
+                setRating(5);
             }).catch(console.log);
     }
 
