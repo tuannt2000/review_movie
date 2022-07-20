@@ -24,13 +24,12 @@ const rows = [
 
 const UserTable = () => {
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover bgcolor="white">
       <thead>
         <tr>
           <th>STT</th>
           <th>Email</th>
           <th>Joined</th>
-          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -39,15 +38,6 @@ const UserTable = () => {
             <td>{index}</td>
             <td>{row.email}</td>
             <td>{row.joined}</td>
-            <td>
-              {row.status === 0 ? (
-                <Button variant="contained">Active</Button>
-              ) : (
-                <Button variant="contained" color="error">
-                  Deactive
-                </Button>
-              )}
-            </td>
           </tr>
         ))}
       </tbody>

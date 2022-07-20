@@ -49,7 +49,7 @@ const MovieTable = () => {
       >
         <AddIcon></AddIcon>
       </Button>
-      <Table striped bordered hover>
+      <Table striped bordered hover bgcolor="white">
         <thead>
           <tr>
             <th>STT</th>
