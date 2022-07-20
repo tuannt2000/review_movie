@@ -46,20 +46,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function postReview(rating, review, type) {
-    var id = window.location.pathname.substring(type === "movie" ? 7 : 8);
-    fetch(REACT_APP_BASE_URL + type + "/" + id + "/reviews", { method: "POST", body: JSON.stringify({ rating, review }), headers: { 'Content-Type': "application/json", token: window.localStorage.getItem("token") } })
-        .then(x => x.text())
-        .then(function () {
-            window.location.reload();
-        }).catch(console.log);
-}
 
 export default function CreateReview(props) {
     const classes = useStyles();
     const [review, setReview] = useState(window.localStorage.getItem("review") || "");
     const [rating, setRating] = useState(5);
     var isLoggedIn = window.localStorage.getItem("token") ? true : false;
+
+    function postReview(rating, review, type) {
+        var id = window.location.pathname.substring(type === "movie" ? 7 : 8);
+        fetch(REACT_APP_BASE_URL + type + "/" + id + "/reviews", { method: "POST", body: JSON.stringify({ rating, review }), headers: { 'Content-Type': "application/json", token: window.localStorage.getItem("token") } })
+            .then(x => x.text())
+            .then(function () {
+                window.location.reload();
+            }).catch(console.log);
+    }
 
     return (
         <div>
