@@ -1,6 +1,6 @@
 import ReactPaginate from 'react-paginate';
 import React, { useEffect, useState } from 'react';
-import { PeopleTable } from '~/pages/Admin/people/PeopleTable';
+import PeopleList from '~/pages/Admin/people/PeopleList';
 import { REACT_APP_BASE_URL } from '~/constants/config';
 
 function PaginatedItems({ itemsPerPage }) {
@@ -40,7 +40,7 @@ function PaginatedItems({ itemsPerPage }) {
 
     return (
         <>
-            <PeopleTable currentItems={currentItems} />
+            <PeopleList currentItems={currentItems} />
             <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"
