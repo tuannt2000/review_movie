@@ -10,6 +10,7 @@ import MovieTable from "~/pages/Admin/Movie/MovieTable";
 import MovieDetail from "~/pages/Admin/Movie/MovieDetail";
 import PeopleTable from "~/pages/Admin/People/PeopleTable";
 import PeopleDetail from "~/pages/Admin/People/PeopleDetail";
+import Search from "~/pages/Search";
 
 export const routes = [
   { path: routesConfig.home, component: Home },
@@ -17,6 +18,7 @@ export const routes = [
   { path: routesConfig.people, component: People },
   { path: routesConfig.user, component: User },
   { path: routesConfig.me, component: Me },
+  { path: routesConfig.search, component: Search},
   { path: routesConfig.adminUser, component: UserTable, role: "admin" },
   { path: routesConfig.adminMovies, component: MovieTable, role: "admin" },
   {
