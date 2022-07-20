@@ -8,8 +8,8 @@ const routes = {
     adminUser: '/admin/users',
     adminMovies: '/admin/movies',
     adminMovieDetail: '/admin/movies/:id',
-    adminPeoples: '/admin/peoples',
-    adminPeopleDetail: '/admin/peoples/:id',
+    adminPeoples: '/admin/people',
+    adminPeopleDetail: '/admin/people/:id',
 };
 
 export default routes;

@@ -24,7 +24,7 @@ const pages1 = [
   },
   {
     name: "People",
-    href: "/admin/peoples",
+    href: "/admin/people",
   },
 ];
 

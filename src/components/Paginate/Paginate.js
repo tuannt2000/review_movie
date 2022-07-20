@@ -49,6 +49,7 @@ function PaginatedItems({ itemsPerPage }) {
                 pageCount={pageCount}
                 previousLabel="< previous"
                 renderOnZeroPageCount={null}
+                
             />
         </>
     );
