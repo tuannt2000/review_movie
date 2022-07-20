@@ -19,10 +19,11 @@ const style = {
 
 const PeopleList = ({ currentItems }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [people, setPeople] = useState({});
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
-
-  console.log(currentItems);
 
   return (
     <Table striped bordered hover>
@@ -39,7 +40,7 @@ const PeopleList = ({ currentItems }) => {
         {currentItems &&
           currentItems.map((people, index) => (
             <tr key={people.people_id}>
-              <td >{index}</td>
+              <td>{index}</td>
               <td>
                 <a
                   href={`/admin/people/${people.people_id}`}
@@ -57,7 +58,7 @@ const PeopleList = ({ currentItems }) => {
               </td>
               <td>{people.profession}</td>
               <td>
-                <Button variant="contained" onClick={handleOpen}>
+                <Button variant="contained" onClick={() => handleOpen(people)}>
                   <EditIcon></EditIcon>
                 </Button>
                 <Button variant="contained" color="error">
@@ -75,7 +76,7 @@ const PeopleList = ({ currentItems }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            {people.id}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.

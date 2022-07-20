@@ -149,15 +149,20 @@ const MovieDetail = () => {
           </Typography>
           <List className={classes.list}>
             {movie &&
-              movie.cast.map((p, index) => (
-                <Link key={index} href={"/admin/people/" + p.people_id}>
-                  <img
-                    alt=""
-                    className={classes.people}
-                    src={"https://image.tmdb.org/t/p/w500" + p.image}
-                  />
-                </Link>
-              ))}
+              movie.cast.map((p, index) => {
+                
+                return p.image !== null ? (
+                  <Link key={index} href={"/admin/people/" + p.people_id}>
+                    <img
+                      alt=""
+                      className={classes.people}
+                      src={"https://image.tmdb.org/t/p/w500" + p.image}
+                    />
+                  </Link>
+                ) : (
+                  ""
+                );
+              })}
           </List>
         </Box>
       </Box>
