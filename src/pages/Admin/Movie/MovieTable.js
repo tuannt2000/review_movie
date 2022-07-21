@@ -6,6 +6,11 @@ import { Box, Button, Modal, Typography } from "@mui/material";
 import "./styles.css";
 import AddIcon from "@mui/icons-material/Add";
 import ModalEditMovie from "~/components/ModalEditMovie/ModalEditMovie";
+import PaginateMovie from "~/components/Paginate/PaginateMovie";
+import { useEffect, useState } from "react";
+import { REACT_APP_BASE_URL } from '~/constants/config';
+import ReactPaginate from 'react-paginate';
+
 function createData(id, movieName, rate, status) {
   return { id, movieName, rate, status };
 }
@@ -39,6 +44,17 @@ const MovieTable = () => {
   const [openEdit, setOpenEdit] = React.useState(false);
   const handleOpenModalEdit = () => setOpenEdit(true);
   const handleCloseModalEdit = () => setOpenEdit(false);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [items, setItems] = useState([])
+  const [itemOffset, setItemOffset] = useState(0);
+  useEffect(() => {
+    fetch(REACT_APP_BASE_URL + 'movies')
+      .then(response => response.json())
+      .then(data => setItems(data))
+      .catch(err => console.log(err))
+  }, []);
+  
   return (
     <React.Fragment>
       <Button
@@ -53,25 +69,25 @@ const MovieTable = () => {
           <tr>
             <th>STT</th>
             <th>Movie Name</th>
-            <th>Rate</th>
-            <th>Status</th>
+            <th>Plot</th>
+            <th>Release Date</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, index) => (
+          { items.map((d, index) => (
             <tr key={index}>
-              <td>{index}</td>
+              <td>{d.movie_id}</td>
               <td>
                 <a
-                  href={`/admin/movies/${row.id}`}
+                  href={`/admin/movies/${d.movie_id}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  {row.movieName}
+                  {d.title}
                 </a>
               </td>
-              <td>{row.rate}</td>
-              <td>{row.status}</td>
+              <td>{d.plot}</td>
+              <td>{d.release_date}</td>
               <td>
                 <Button variant="contained" onClick={handleOpenModalEdit}>
                   <EditIcon></EditIcon>
@@ -83,7 +99,7 @@ const MovieTable = () => {
               <ModalEditMovie
                 open={openEdit}
                 handleClose={handleCloseModalEdit}
-                data={row}
+                data={items}
               />
             </tr>
           ))}
