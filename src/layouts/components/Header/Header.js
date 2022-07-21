@@ -109,6 +109,8 @@ export default function SearchAppBar() {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value
     }
 
+    console.log(profile.pic)
+
     return (
         <div className={classes.header}>
             <AppBar position="static" className={classes.bar}>
