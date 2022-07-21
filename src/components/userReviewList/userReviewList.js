@@ -47,11 +47,14 @@ export default function UserReviewList(props) {
 
     const [reviews, setReviews] = useState(0);
 
+    console.log(reviews);
+
     useEffect(() => {
         var query = props.id || window.location.pathname.substring(6);
-        fetch(REACT_APP_BASE_URL + "user/" + query + "/  ")
+        fetch(REACT_APP_BASE_URL + "user/" + query + "/reviews")
             .then(resp => resp.json())
-            .then((data) => setReviews(data));
+            .then((data) => setReviews(data))
+            .catch(err => console.error(err))
     }, [props.id])
 
     return (

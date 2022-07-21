@@ -104,8 +104,6 @@ export default function SearchAppBar() {
             .catch((err) => console.log(err));
     },[])
 
-    console.log(user)
-
     function search(e) {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value
     }
