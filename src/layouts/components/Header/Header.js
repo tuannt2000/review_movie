@@ -10,6 +10,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import images from '~/assets/images';
+import { useSelector,useDispatch } from 'react-redux';
+import { getInfoUser } from '../../../redux/user';
 import { REACT_APP_BASE_URL } from '~/constants/config';
 
 const useStyles = makeStyles((theme) => ({
@@ -92,14 +94,17 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar() {
     const classes = useStyles();
     const [value, setValue] = useState('');
-    const [profile, setProfile] = useState(1);
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(REACT_APP_BASE_URL + "me", { headers: { token: window.localStorage.getItem("token") } })
             .then(resp => resp.json())
-            .then((data) => setProfile(data))
+            .then(data => dispatch(getInfoUser(data)))
             .catch((err) => console.log(err));
-    }, [])
+    },[])
+
+    console.log(user)
 
     function search(e) {
         if (e.keyCode === 13) window.location.href = "/search/" + e.target.value
@@ -134,7 +139,7 @@ export default function SearchAppBar() {
                         />
                     </div>
                     {
-                        profile.pic ? <Link href="/me"><Avatar alt="PopCritic" src={profile ? profile.pic : ""} className={classes.user} /></Link> : <Button variant="contained" href="https://review-film-backend.herokuapp.com/login" className={classes.login}>Log In</Button>
+                        user.current_user.pic ? <Link href="/me"><Avatar alt="PopCritic" src={user.current_user ? user.current_user.pic : ""} className={classes.user} /></Link> : <Button variant="contained" href="https://review-film-backend.herokuapp.com/login" className={classes.login}>Log In</Button>
                     }
                 </Toolbar>
             </AppBar>
