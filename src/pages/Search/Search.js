@@ -6,8 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { REACT_APP_BASE_URL } from '~/constants/config';
 
-const tmdb_api_key = "a7219d99028ec2f029a458c81ba22b37"; 
-
 const useStyles = makeStyles((theme) => ({
     list: {
         background: '#121212',
@@ -49,9 +47,9 @@ export default function Search() {
     useEffect(() => {
         var query = window.location.pathname.substring(8);
         setQuery(decodeURIComponent(query));
-        fetch("https://api.themoviedb.org/3/search/movie?api_key=" + tmdb_api_key + "&query=" + query)
+        fetch(REACT_APP_BASE_URL + "search/" + query)
             .then(resp => resp.json())
-            .then((data) => setMovies(data.results));
+            .then((data) => setMovies(data));
     }, [])
 
     return (
@@ -60,9 +58,9 @@ export default function Search() {
             <CircularProgress style={{ display: movies ? "none" : "block", margin: "20px auto" }} />
             <List component="nav" className={classes.list} aria-label="mailbox folders">
                 {movies ? movies.map(x => (
-                    <ListItem button onClick={() => addMovie(x.id)} key={x.id}>
-                        <img alt="" src={x.poster_path ? ("https://image.tmdb.org/t/p/w500" + x.poster_path) : "https://via.placeholder.com/400x600"} className={classes.poster} />
-                        <Typography className={classes.title}>{x.original_title}</Typography>
+                    <ListItem button onClick={() => addMovie(x.movie_id)} key={x.movie_id}>
+                        <img alt="" src={x.poster ? ("https://image.tmdb.org/t/p/w500" + x.poster) : "https://via.placeholder.com/400x600"} className={classes.poster} />
+                        <Typography className={classes.title}>{x.title}</Typography>
                         <Typography className={classes.date}>({x.release_date ? x.release_date.split("-")[0] : ""})</Typography>
                     </ListItem>
                 )) : ""}
